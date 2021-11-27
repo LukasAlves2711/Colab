@@ -1,0 +1,20 @@
+https://nodejs.org/download/release/v13.9.0/
+->node-v13.9.0-x64.msi  
+
+->cd desktop/Projetos/colab
+->composer require laravel/breeze --dev
+->php artisan breeze:install
+->npm install
+->npm run dev
+->php artisan migrate
+->php artisan serve
+->acessar localhost:8000
+-----------migration de bloco--------
+->php artisan make:migration create_blocks_table
+->acessar colab/database/migrations/
+->alterar migrations de blocos
+->php artisan migrate
+->conferir nova tabela no banco
+-----------migration de courses--------
+->create_courses_table
+->id, name, coord_name, total_students
