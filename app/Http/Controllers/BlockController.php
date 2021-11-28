@@ -25,7 +25,7 @@ class BlockController extends Controller
      */
     public function create()
     {
-        //
+        return view('blocks.create');
     }
 
     /**
@@ -36,7 +36,16 @@ class BlockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+        ]);
+
+        Block::create([
+            'name' => request('name'),
+            
+        ]);
+
+        return redirect('blocks');
     }
 
     /**
@@ -56,9 +65,9 @@ class BlockController extends Controller
      * @param  \App\Models\Block  $block
      * @return \Illuminate\Http\Response
      */
-    public function edit(Block $block)
+    public function edit(Block $name)
     {
-        //
+        return view('blocks.edit', ['name' => $name ]);
     }
 
     /**
@@ -68,9 +77,16 @@ class BlockController extends Controller
      * @param  \App\Models\Block  $block
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Block $block)
+    public function update(Request $request, Block $name)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+        ]);
+        $post->update([
+            'name' => request('name')
+        ]);
+
+        return redirect('blocks');
     }
 
     /**
@@ -79,8 +95,10 @@ class BlockController extends Controller
      * @param  \App\Models\Block  $block
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Block $block)
+    public function destroy(Block $name)
     {
-        //
+        $name->delete();
+
+            return redirect('blocks');
     }
 }

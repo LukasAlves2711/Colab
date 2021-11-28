@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/blocks', [BlockController::class, 'index']
+Route::get('/blocks/index', [BlockController::class, 'index']
 )->middleware(['auth'])->name('blocks');
 
 Route::get('/posts/index', [PostsController::class, 'index']
@@ -34,6 +34,22 @@ Route::get('/posts/index', [PostsController::class, 'index']
 
 require __DIR__ . '/auth.php';
 
+// Block
+
+Route::get('/blocks', [BlockController::class, 'index']);
+
+Route::post('/blocks', [BlockController::class, 'store']);
+
+Route::get('/blocks/create', [BlockController::class, 'create']);
+
+Route::get('/blocks/{block}/edit', [BlockController::class, 'edit']);
+
+Route::put('/blocks/{block}', [BlockController::class, 'update']);
+
+Route::delete('/blocks/{block}', [BlockController::class, 'destroy']);
+
+
+//Post
 
 Route::get('/posts', [PostsController::class, 'index']);
 
